@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class DatabaseConnection implements  DBConnection{
     private static final DatabaseConnection inst = new DatabaseConnection();
     private  static String url = "jdbc:mysql://mysql:3306/Ticker_app";
     private  static String user = "root";

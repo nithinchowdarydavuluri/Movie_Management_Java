@@ -5,6 +5,7 @@ import org.example.cache.InMemoryCache;
 import org.example.cache.MovieT;
 
 import org.example.exception.MovieNotFoundException;
+import org.example.util.DBConnection;
 import org.example.util.DatabaseConnection;
 
 import javax.smartcardio.TerminalFactory;
@@ -15,12 +16,12 @@ import java.util.List;
 
 
 public class MovieRepositoryImpl implements MovieRepository{
-
+    DBConnection datbaseconnnection = DatabaseConnection.getInstance();
     @Override
     public void save(Movie movie) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String sql = "INSERT INTO movies (name,genre,price,time_stamp) VALUES(?,?,?,?)";
-        try(Connection connection = DatabaseConnection.getInstance().getConnection()){
+        try(Connection connection = datbaseconnnection.getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,movie.getName());
             preparedStatement.setString(2,movie.getGenre());
@@ -47,7 +48,7 @@ public class MovieRepositoryImpl implements MovieRepository{
     @Override
     public Movie findById(int id) {
         String sql = "SELECT * FROM movies where id = ?";
-        try(Connection connection = DatabaseConnection.getInstance().getConnection();
+        try(Connection connection = datbaseconnnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ){
             preparedStatement.setInt(1,id);
@@ -76,7 +77,7 @@ public class MovieRepositoryImpl implements MovieRepository{
     public  List<Movie> findAll() {
         String sql = "select * from movies";
         List<Movie> alist = new ArrayList<>();
-        try(Connection connection = DatabaseConnection.getInstance().getConnection();
+        try(Connection connection =datbaseconnnection.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql)){
             while(resultSet.next()){
@@ -102,7 +103,7 @@ public class MovieRepositoryImpl implements MovieRepository{
     @Override
     public void update(Movie movie) {
          String sql = "update movies set name = ?,genre=?,price=? where id = ?";
-         try(Connection connection = DatabaseConnection.getInstance().getConnection();
+         try(Connection connection = datbaseconnnection.getConnection();
          PreparedStatement preparedStatement = connection.prepareStatement(sql)){
              preparedStatement.setString(1,movie.getName());
              preparedStatement.setString(2, movie.getGenre());

@@ -3,6 +3,7 @@ package org.example.repository;
 import org.example.Model.Movie;
 import org.example.cache.InMemoryCache;
 import org.example.exception.MovieNotFoundException;
+import org.example.util.DBConnection;
 import org.example.util.PostgresDatabaseConnection;
 
 import java.sql.*;
@@ -10,7 +11,7 @@ import java.sql.*;
 import java.util.List;
 
 public class PostgreSQLMovieRepositoryImpl implements MovieRepository {
-
+     DBConnection databaseconnection = PostgresDatabaseConnection.getInstance();
     @Override
     public void save(Movie movie) {
 
@@ -23,7 +24,7 @@ public class PostgreSQLMovieRepositoryImpl implements MovieRepository {
 
         try (
                 Connection connection =
-                        PostgresDatabaseConnection.getInstance().getConnection();
+                        databaseconnection.getConnection();
 
                 PreparedStatement preparedStatement =
                         connection.prepareStatement(
@@ -66,7 +67,7 @@ public class PostgreSQLMovieRepositoryImpl implements MovieRepository {
 
         try (
                 Connection connection =
-                        PostgresDatabaseConnection.getInstance().getConnection();
+                        databaseconnection.getConnection();
 
                 PreparedStatement preparedStatement =
                         connection.prepareStatement(sql)
@@ -111,7 +112,7 @@ public class PostgreSQLMovieRepositoryImpl implements MovieRepository {
 
         try (
                 Connection connection =
-                        PostgresDatabaseConnection.getInstance().getConnection();
+                        databaseconnection.getConnection();
 
                 Statement statement =
                         connection.createStatement();
@@ -157,7 +158,7 @@ public class PostgreSQLMovieRepositoryImpl implements MovieRepository {
 
         try (
                 Connection connection =
-                        PostgresDatabaseConnection.getInstance().getConnection();
+                        databaseconnection.getConnection();
 
                 PreparedStatement preparedStatement =
                         connection.prepareStatement(sql)
@@ -198,7 +199,7 @@ public class PostgreSQLMovieRepositoryImpl implements MovieRepository {
 
         try (
                 Connection connection =
-                        PostgresDatabaseConnection.getInstance().getConnection();
+                      databaseconnection.getConnection();
 
                 PreparedStatement preparedStatement =
                         connection.prepareStatement(sql)

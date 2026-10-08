@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class PostgresDatabaseConnection {
+public class PostgresDatabaseConnection implements DBConnection{
 
     private static final PostgresDatabaseConnection instance =
             new PostgresDatabaseConnection();
