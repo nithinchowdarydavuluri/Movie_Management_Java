@@ -28,10 +28,9 @@ services:
       context: ..
       dockerfile: Movie_Ticket_Management/Dockerfile
     container_name: movie-tomcat
-    # ports:
-    #   - "8080:8080"
-    expose:
-      - "8080"
+    ports:
+       - "8080:8080"
+
     depends_on:
       - mysql
       - postgres
