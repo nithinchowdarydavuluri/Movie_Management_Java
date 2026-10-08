@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DatabaseConnection implements  DBConnection{
     private static final DatabaseConnection inst = new DatabaseConnection();
-    private  static String url = "jdbc:mysql://mysql:3306/Ticker_app";
-    private  static String user = "root";
-    private  static String password = "Kritter@1";
+    private  static String url = DatabaseConfig.get("mysql.url");
+    private  static String user = DatabaseConfig.get("mysql.user");
+    private  static String password = DatabaseConfig.get("mysql.password");
 
 
     public static DatabaseConnection getInstance(){

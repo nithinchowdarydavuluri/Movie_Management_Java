@@ -9,12 +9,11 @@ public class PostgresDatabaseConnection implements DBConnection{
     private static final PostgresDatabaseConnection instance =
             new PostgresDatabaseConnection();
 
-    private static final String URL =
-            "jdbc:postgresql://postgres:5432/Ticker_app";
+    private static final String URL = DatabaseConfig.get("postgresql.url");
 
-    private static final String USER = "postgres";
+    private static final String USER = DatabaseConfig.get("postgresql.user");
 
-    private static final String PASSWORD = "postgres123";
+    private static final String PASSWORD = DatabaseConfig.get("postgresql.password");
 
     private PostgresDatabaseConnection() {
     }
