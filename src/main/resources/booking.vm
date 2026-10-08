@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+        Movie Ticket
+    </title>
+
+</head>
+
+<body>
+
+<h1>
+    Movie Ticket
+</h1>
+
+<hr>
+
+<p>
+
+    <strong>
+        Movie:
+    </strong>
+
+    $movieName
+
+</p>
+
+
+<p>
+
+    <strong>
+        Customer:
+    </strong>
+
+    $customerName
+
+</p>
+
+
+<p>
+
+    <strong>
+        Ticket Category:
+    </strong>
+
+    $category
+
+</p>
+
+
+<p>
+
+    <strong>
+        Booking Status:
+    </strong>
+
+    $status
+
+</p>
+
+</body>
+
+</html>
